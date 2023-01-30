@@ -2,8 +2,18 @@
 #
 # Robert Alexander Limas Sierra
 #
-git clone https://github.com/gpgpu-sim/gpgpu-sim_distribution.git
 APP_DIR=`pwd`
-cd $APP_DIR/gpgpu-sim_distribution
-source setup_environment release
+apt-get install python3.7 curl -y
+apt-get install curl -y
+python3 ${APP_DIR}/get-pip.py --user
+
+export CUDA_INSTALL_PATH=/usr/local/cuda-11.0
+export PATH=$PATH:/usr/local/cuda/bin
+export CUDA_INSTALL_PATH=/usr/local/cuda-11.0
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+git clone https://github.com/gpgpu-sim/gpgpu-sim_distribution.git
+
+cd ${APP_DIR}/gpgpu-sim_distribution
+source setup_environment
 make

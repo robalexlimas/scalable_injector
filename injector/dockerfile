@@ -1,9 +1,10 @@
 FROM accelsim/ubuntu-18.04_cuda-11:latest
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN echo 'PATH=$PATH:/usr/local/cuda/bin' > ~/.profile
+RUN echo 'CUDA_INSTALL_PATH=/usr/local/cuda-11.0' > ~/.profile
+RUN echo 'LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' > ~/.profile
+RUN source ~/.profile
 WORKDIR /injector
-ADD . /injector
-RUN export CUDA_INSTALL_PATH=/usr/local/cuda
-RUN export PATH="/usr/local/cuda/bin:$PATH"
-RUN export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-RUN chmod +x /injector/init
-RUN /injector/init
-EXPOSE 80
+COPY . .
+RUN chmod +x init
+RUN ./init
