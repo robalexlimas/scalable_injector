@@ -1,0 +1,5 @@
+FROM aamodt/gpgpu-sim_regress:latest
+WORKDIR /injector
+ADD . /injector
+VOLUME [ "/home/jdguest/Documents/scalable_injector:/injector" ]
+CMD /injector/init
