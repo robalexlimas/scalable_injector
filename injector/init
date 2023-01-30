@@ -1,9 +1,9 @@
+#!/bin/bash
+#
+# Robert Alexander Limas Sierra
+#
 git clone https://github.com/gpgpu-sim/gpgpu-sim_distribution.git
 APP_DIR=`pwd`
 cd $APP_DIR/gpgpu-sim_distribution
-export CUDA_INSTALL_PATH=/usr/local/cuda
-export PATH="/usr/local/cuda/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 source setup_environment release
 make
-echo "End config"

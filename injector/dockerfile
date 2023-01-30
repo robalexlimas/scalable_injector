@@ -1,5 +1,9 @@
-FROM aamodt/gpgpu-sim_regress:latest
+FROM accelsim/ubuntu-18.04_cuda-11:latest
 WORKDIR /injector
 ADD . /injector
-VOLUME [ "/home/jdguest/Documents/scalable_injector:/injector" ]
-CMD /injector/init
+RUN export CUDA_INSTALL_PATH=/usr/local/cuda
+RUN export PATH="/usr/local/cuda/bin:$PATH"
+RUN export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+RUN chmod +x /injector/init
+RUN /injector/init
+EXPOSE 80
