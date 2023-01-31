@@ -1,9 +1,5 @@
 FROM accelsim/ubuntu-18.04_cuda-11:latest
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-RUN echo 'PATH=$PATH:/usr/local/cuda/bin' > ~/.bashrc
-RUN echo 'CUDA_INSTALL_PATH=/usr/local/cuda-11.0' > ~/.bashrc
-RUN echo 'LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' > ~/.bashrc
-RUN source ~/.bashrc
 WORKDIR /injector
 COPY . .
 RUN chmod +x init
