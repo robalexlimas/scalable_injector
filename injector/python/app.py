@@ -1,32 +1,39 @@
-from common import DIR_INJECTOR, DEBUG, UID
+from common import DIR_INJECTOR, DEBUG, MAX_ATTEMPTS, UID
 from log import log
-from responses import response
 
 
-from flask import Flask
-from flask_cors import CORS
-import logging, os, time
+import logging, os, requests, time
 
 
 logging.basicConfig(level=logging.DEBUG)
 
 
-app = Flask(__name__)
-CORS(app)
+def request_fault():
+    url = 'http://www.google.com'
+    headers = {'Content-type': 'text/html; charset=UTF-8'}
+    response = requests.get(url, headers=headers)
+    if response.status_code == 404:
+        raise AssertionError
+    if not response.status_code == 200:
+        raise Exception
+    print(response)
+    return ''
 
 
-@app.route('/', methods=['GET'])
-def entry():
-    return response('Hello from API')
+def execute_fault(fault):
+    print('')
+    time.sleep(20)
 
 
 if __name__ == '__main__':
     while True:
         try:
-            app.run(debug=DEBUG, host='0.0.0.0', port=3000)
-        except:
-            logging.exception('Error in main loop')
-            logging.error('Waiting 10s and restarting')
-            log('Error in main loop')
+            fault = request_fault()
+            execute_fault(fault)
+        except AssertionError:
+            logging.exception('Fault list complete')
+        except Exception:
+            logging.exception('Server down')
+        finally:
             time.sleep(10)
 

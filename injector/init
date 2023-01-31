@@ -15,3 +15,6 @@ git clone https://github.com/gpgpu-sim/gpgpu-sim_distribution.git
 cd ${APP_DIR}/gpgpu-sim_distribution
 source setup_environment
 make
+
+cd ${APP_DIR}/apps
+
