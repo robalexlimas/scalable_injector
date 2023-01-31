@@ -1,4 +1,4 @@
-import os
+import os, uuid
 
 
 APPS = [
@@ -16,3 +16,4 @@ BASE_DIR = os.getcwd()
 DIR_INJECTOR = os.path.join(os.getcwd(), '..')
 DEBUG = True
 LOG_PATH = os.path.join(BASE_DIR, 'log.txt')
+UID = uuid.uuid1()
