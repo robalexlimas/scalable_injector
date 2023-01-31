@@ -164,3 +164,9 @@ flask/
 
 # Logs files
 log.txt
+
+# GPGPU-Sim dir
+gpgpu-sim_distribution/
+
+# Rodinia
+rodinia/
