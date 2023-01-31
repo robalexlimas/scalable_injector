@@ -3,9 +3,7 @@
 # Robert Alexander Limas Sierra
 #
 APP_DIR=`pwd`
-apt-get install python3.7 curl -y
-apt-get install curl -y
-python3 ${APP_DIR}/get-pip.py --user
+apt install python3.8 -y
 
 export CUDA_INSTALL_PATH=/usr/local/cuda-11.0
 export PATH=$PATH:/usr/local/cuda/bin
