@@ -3,24 +3,25 @@ from execute import execute_golden_app, execute_app_with_fault
 from log import log
 
 
-import logging, os, requests, time
+import json, logging, os, requests, time
 
 
 logging.basicConfig(level=logging.DEBUG)
 
 
 def request_fault():
-    url = 'http://www.google.com'
-    headers = {'Content-type': 'text/html; charset=UTF-8'}
+    url = 'http://controller/fault'
+    headers = {'Content-type': 'application/json'}
     response = requests.get(url, headers=headers)
+    content = json.loads(response.content)
+    logging.info('Response. {}'.format(content))
     if response.status_code == 404:
         raise AssertionError
     if not response.status_code == 200:
         raise Exception
-    print(response)
     return {
-        'app': 'backprop',
-        'fault': ''
+        'app': content['data']['app'],
+        'fault': content['data']['fault']
     }
 
 

@@ -3,10 +3,10 @@ services:
   injector:
     build: injector
     ports:
-    - "3000:5000"
+    - "8001:80"
     depends_on:
       - controller
   controller:
     build: controller
     ports:
-    - "3001:5000"
+    - "8000:80"

@@ -47,7 +47,7 @@ APPS = {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'heartwall'),
         'binary': 'run',
         'args': '{} 2'.format(os.path.join(DIR_APPS, 'rodinia', 'data', 'heartwall', 'test.avi')),
-        'timeout': 10
+        'timeout': 8210
     },
     'cfd': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'cfd'),
