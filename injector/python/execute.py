@@ -1,4 +1,5 @@
-from common import APPS
+from common import APPS, DIR_APPS, DIR_GPGPUSIM
+from config_gpgpusim import load_params
 
 
 import logging, os, signal, subprocess, time
@@ -7,22 +8,36 @@ import logging, os, signal, subprocess, time
 logging.basicConfig(level=logging.DEBUG)
 
 
-def execute_app(app_script, fault):
-    logging.info('Running app: {} with fault: {}'.format(
-        app_script.split('/')[-1],
-        fault.split(',')[0]
-    ))
+def execute_app(app_name, fault):
+    app_dir = APPS[app_name]['dir']
+    app_script = APPS[app_name]['binary']
+    args = APPS[app_name]['args']
+    timeout = APPS[app_name]['timeout']
+    logging.info(
+        'Running app: {} with fault: {}'.format(
+            app_name,
+            'test'
+        )
+    )
+    load_params(app_dir, fault)
+    commands = '{} {} {} {}'.format(
+        '{}/{}'.format(app_dir, app_script),    # route executable
+        DIR_GPGPUSIM,                           # route gpgpu-sim
+        app_dir,                                # route app
+        args                                    # args to execute
+    )
+    logging.info('Command: {}'.format(commands))
     process = subprocess.Popen(
-        app_script, 
+        commands, 
         shell=True, 
         executable='/bin/bash',
         preexec_fn=os.setsid
     )
-    [timeout, code] = is_timeout(process, 10)
+    [timeout, code] = is_timeout(process, timeout)
 
 
-def is_timeout(process, time):
-    total_time = time.time() + time
+def is_timeout(process, time_exe):
+    total_time = time.time() + time_exe
     while True:
         code = process.poll()
         if code is not None:

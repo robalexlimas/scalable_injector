@@ -1,4 +1,5 @@
 from common import DIR_INJECTOR, DEBUG, MAX_ATTEMPTS, UID
+from execute import execute_app
 from log import log
 
 
@@ -9,6 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 def request_fault():
+    """
     url = 'http://www.google.com'
     headers = {'Content-type': 'text/html; charset=UTF-8'}
     response = requests.get(url, headers=headers)
@@ -17,12 +19,12 @@ def request_fault():
     if not response.status_code == 200:
         raise Exception
     print(response)
+    """
     return ''
 
 
 def execute_fault(fault):
-    print('')
-    time.sleep(20)
+    execute_app('backprop', '')
 
 
 if __name__ == '__main__':
@@ -36,4 +38,3 @@ if __name__ == '__main__':
             logging.exception('Server down')
         finally:
             time.sleep(10)
-

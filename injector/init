@@ -5,14 +5,14 @@
 APP_DIR=`pwd`
 apt install python3.8 -y
 
-export CUDA_INSTALL_PATH=/usr/local/cuda-11.0
 export PATH=$PATH:/usr/local/cuda/bin
-export CUDA_INSTALL_PATH=/usr/local/cuda-11.0
+export CUDA_INSTALL_PATH=/usr/local/cuda
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 git clone https://github.com/gpgpu-sim/gpgpu-sim_distribution.git
 
 cd ${APP_DIR}/gpgpu-sim_distribution
+make clean
 source setup_environment
 make
 
@@ -21,4 +21,6 @@ cd ${APP_DIR}/apps
 git clone https://github.com/robalexlimas/rodinia.git
 cd ${APP_DIR}/apps/rodinia
 git checkout rodinia_gpgpusim
+chmod +x -R .
+make clean
 make
