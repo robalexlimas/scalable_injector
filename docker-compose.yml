@@ -1,0 +1,12 @@
+version: "2"
+services:
+  injector:
+    build: injector
+    ports:
+    - "3000:5000"
+    depends_on:
+      - controller
+  controller:
+    build: controller
+    ports:
+    - "3001:5000"
