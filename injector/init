@@ -21,6 +21,7 @@ cd ${APP_DIR}/apps
 git clone https://github.com/robalexlimas/rodinia.git
 cd ${APP_DIR}/apps/rodinia
 git checkout rodinia_gpgpusim
+git pull
 chmod +x -R .
 make clean
 make

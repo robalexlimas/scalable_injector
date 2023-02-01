@@ -1,5 +1,5 @@
-from common import DIR_INJECTOR, DEBUG, MAX_ATTEMPTS, UID
-from execute import execute_app
+from common import APPS, DIR_INJECTOR, DEBUG, MAX_ATTEMPTS, UID
+from execute import execute_golden_app, execute_app_with_fault
 from log import log
 
 
@@ -10,7 +10,6 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 def request_fault():
-    """
     url = 'http://www.google.com'
     headers = {'Content-type': 'text/html; charset=UTF-8'}
     response = requests.get(url, headers=headers)
@@ -19,12 +18,18 @@ def request_fault():
     if not response.status_code == 200:
         raise Exception
     print(response)
-    """
-    return ''
+    return {
+        'app': 'backprop',
+        'fault': ''
+    }
 
 
 def execute_fault(fault):
-    execute_app('backprop', '')
+    app, fault_info = fault['app'], fault['fault']
+    if len(fault_info) > 0:
+        execute_app_with_fault(app, fault_info)
+    else:
+        execute_golden_app(app)
 
 
 if __name__ == '__main__':
