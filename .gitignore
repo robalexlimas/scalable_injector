@@ -167,6 +167,7 @@ log.txt
 
 # GPGPU-Sim dir
 gpgpu-sim_distribution/
+injector/results/*
 
 # Rodinia
 rodinia/

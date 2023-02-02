@@ -1,4 +1,4 @@
-import os, uuid
+import os
 
 
 BASE_DIR = os.getcwd()
@@ -9,7 +9,7 @@ DIR_GPGPUSIM_CONFIG = os.path.join(DIR_GPGPUSIM, 'configs/tested-cfgs/SM75_RTX20
 DEBUG = str(os.getenv('DEBUG')).startswith('1')
 LOG_PATH = os.path.join(BASE_DIR, 'log.txt')
 MAX_ATTEMPTS = 10
-UID = uuid.uuid1()
+UID = os.uname().nodename
 
 
 APPS = {

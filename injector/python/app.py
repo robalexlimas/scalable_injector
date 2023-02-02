@@ -1,4 +1,4 @@
-from common import APPS, DIR_INJECTOR, DEBUG, MAX_ATTEMPTS, UID
+from common import APPS, DIR_INJECTOR, DEBUG, MAX_ATTEMPTS
 from execute import execute_golden_app, execute_app_with_fault
 from log import log
 

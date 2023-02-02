@@ -2,10 +2,10 @@ version: "2"
 services:
   injector:
     build: injector
-    ports:
-    - "8001:80"
     depends_on:
       - controller
+    volumes:
+      - ./injector/results:/injector/results
   controller:
     build: controller
     ports:
