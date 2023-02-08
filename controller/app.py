@@ -23,7 +23,7 @@ def info():
 def fault():
     data = {
         'fault': '',
-        'app': 'backprop'
+        'app': 'nn'
     }
     return response('Fault information', data=data)
 
