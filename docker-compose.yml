@@ -4,6 +4,8 @@ services:
     build: injector
     depends_on:
       - controller
+    deploy:
+      replicas: 10
     volumes:
       - ./injector/results:/injector/results
   controller:
