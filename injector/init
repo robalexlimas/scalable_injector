@@ -9,9 +9,10 @@ export PATH=$PATH:/usr/local/cuda/bin
 export CUDA_INSTALL_PATH=/usr/local/cuda
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
-git clone https://github.com/gpgpu-sim/gpgpu-sim_distribution.git
+git clone https://github.com/robalexlimas/gpgpu-sim_distribution.git
 
 cd ${APP_DIR}/gpgpu-sim_distribution
+git checkout hardware_injection
 make clean
 source setup_environment
 make
@@ -21,7 +22,6 @@ cd ${APP_DIR}/apps
 git clone https://github.com/robalexlimas/rodinia.git
 cd ${APP_DIR}/apps/rodinia
 git checkout rodinia_gpgpusim
-git pull
 chmod +x -R .
 make clean
 make
