@@ -6,5 +6,3 @@ RUN chmod +x init
 RUN ./init
 WORKDIR /injector/python
 RUN python3.8 -m pip install -r requeriments.txt
-ENTRYPOINT [ "python3.8" ]
-CMD [ "app.py" ]
