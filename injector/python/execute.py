@@ -55,8 +55,8 @@ def execute_app(app_name, app_dir, app_script, args, timeout, golden=True):
     logging.info('Command: {}'.format(commands))
     results_dir = os.path.join(DIR_INJECTOR, 'results', UID)
     exits_dir(results_dir)
-    stdout_name = '{}_golden.txt'.format(app_name) if golden else '{}.txt'.format(app_name)
-    stderr_name = 'stderr.txt'
+    stdout_name = '{}_golden.log'.format(app_name) if golden else '{}.log'.format(app_name)
+    stderr_name = 'stderr.log'
     stdout_dir = os.path.join(results_dir, stdout_name)
     stderr_dir = os.path.join(results_dir, stderr_name)
     file_stdout = open(stdout_dir, 'w')
@@ -75,7 +75,7 @@ def execute_app(app_name, app_dir, app_script, args, timeout, golden=True):
 
 
 def is_timeout(process, time_exe):
-    total_time = time.time() + time_exe
+    total_time = time.time() + (1.5 * time_exe)
     while True:
         code = process.poll()
         if code is not None:

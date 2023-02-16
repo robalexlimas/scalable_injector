@@ -1,8 +1,8 @@
 import os
 
 
-BASE_DIR = os.getcwd()
-DIR_INJECTOR = os.path.join(os.getcwd(), '..')
+BASE_DIR = '/'
+DIR_INJECTOR = '/injector'
 DIR_APPS = os.path.join(DIR_INJECTOR, 'apps')
 DIR_GPGPUSIM = os.path.join(DIR_INJECTOR, 'gpgpu-sim_distribution')
 DIR_GPGPUSIM_CONFIG = os.path.join(DIR_GPGPUSIM, 'configs/tested-cfgs/')
