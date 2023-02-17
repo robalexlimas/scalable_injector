@@ -1,4 +1,4 @@
-from common import APPS, DIR_APPS, DIR_INJECTOR, DIR_GPGPUSIM, UID
+from common import APPS, DIR_APPS, DIR_INJECTOR, DIR_GPGPUSIM, DIR_RESULTS
 from config_gpgpusim import load_params
 
 
@@ -14,19 +14,16 @@ def execute_app_with_fault(app_name, fault):
     args = APPS[app_name]['args']
     timeout = APPS[app_name]['timeout']
     logging.info(
-        'Running app: {} with fault: {}'.format(
-            app_name,
-            'Fault SM {}, SM sub core {}, core type {}, core id {}, in out {}, operad {}, mask {}, stuckat {}'
-            .format(
-                fault['sm_id'],
-                fault['sm_sub_core_id'],
-                fault['core_type'],
-                fault['core_id'],
-                fault['in_out'],
-                fault['operand'],
-                fault['mask'],
-                fault['stuckat']
-            )
+        'Fault: SM {}, SM sub core {}, core type {}, core id {}, in out {}, operad {}, mask {}, stuckat {}'
+        .format(
+            fault['sm_id'],
+            fault['sm_sub_core_id'],
+            fault['core_type'],
+            fault['core_id'],
+            fault['in_out'],
+            fault['operand'],
+            fault['mask'],
+            fault['stuckat']
         )
     )
     load_params(app_dir, fault)
@@ -53,12 +50,11 @@ def execute_app(app_name, app_dir, app_script, args, timeout, golden=True):
         args                                    # args to execute
     )
     logging.info('Command: {}'.format(commands))
-    results_dir = os.path.join(DIR_INJECTOR, 'results', UID)
-    exits_dir(results_dir)
+    exits_dir(DIR_RESULTS)
     stdout_name = '{}_golden.log'.format(app_name) if golden else '{}.log'.format(app_name)
     stderr_name = 'stderr.log'
-    stdout_dir = os.path.join(results_dir, stdout_name)
-    stderr_dir = os.path.join(results_dir, stderr_name)
+    stdout_dir = os.path.join(DIR_RESULTS, stdout_name)
+    stderr_dir = os.path.join(DIR_RESULTS, stderr_name)
     file_stdout = open(stdout_dir, 'w')
     file_stderr = open(stderr_dir, 'w')
     process = subprocess.Popen(
@@ -78,6 +74,7 @@ def is_timeout(process, time_exe):
     total_time = time.time() + (1.5 * time_exe)
     while True:
         code = process.poll()
+        logging.info('Code: {}'.format(code))
         if code is not None:
             return [False, code]
         time_now = time.time()

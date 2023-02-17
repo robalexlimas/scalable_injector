@@ -3,6 +3,5 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 WORKDIR /injector
 COPY . .
 RUN chmod +x init
-RUN ./init
+RUN chmod +777 -R /injector
 WORKDIR /injector/python
-RUN python3.8 -m pip install -r requeriments.txt

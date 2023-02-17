@@ -6,9 +6,9 @@ DIR_INJECTOR = '/injector'
 DIR_APPS = os.path.join(DIR_INJECTOR, 'apps')
 DIR_GPGPUSIM = os.path.join(DIR_INJECTOR, 'gpgpu-sim_distribution')
 DIR_GPGPUSIM_CONFIG = os.path.join(DIR_GPGPUSIM, 'configs/tested-cfgs/')
+DIR_RESULTS = os.path.join(DIR_INJECTOR, 'results')
 LOG_PATH = os.path.join(BASE_DIR, 'log.txt')
 MAX_ATTEMPTS = 10
-UID = os.uname()[1]
 
 
 APPS = {
