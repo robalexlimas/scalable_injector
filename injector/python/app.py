@@ -1,4 +1,4 @@
-from common import APPS, DIR_INJECTOR, UID
+from common import APPS, DIR_INJECTOR, DIR_RESULTS
 from execute import execute_golden_app, execute_app_with_fault
 from log import log
 
@@ -28,9 +28,7 @@ def get_args():
 
 
 def make_tar_file(fault):
-    results_dir = os.path.join(DIR_INJECTOR, 'results', UID)
-    print(results_dir)
-    results = os.listdir(results_dir)
+    results = os.listdir(DIR_RESULTS)
     tar_name = '{}_{}_{}_{}_{}_{}_{}_{}.tar.gz'.format(
         fault['sm_id'],
         fault['sm_sub_core_id'],
@@ -41,16 +39,17 @@ def make_tar_file(fault):
         fault['mask'],
         fault['stuckat']
     )
-    tar_dir = os.path.join(results_dir, tar_name)
+    tar_dir = os.path.join(DIR_RESULTS, tar_name)
     logging.info('Saving files in {}'.format(tar_dir))
     tar = tarfile.open(tar_dir, 'w:gz')
     for file in results:
-        file_dir = os.path.join(results_dir, file)
-        tar.add(file_dir)
+        logging.info('File: {}'.format(file))
+        file_dir = os.path.join(DIR_RESULTS, file)
+        tar.add(file_dir, file)
     tar.close()
     logging.info('Delete files')
     for file in results:
-        file_dir = os.path.join(results_dir, file)
+        file_dir = os.path.join(DIR_RESULTS, file)
         if not file_dir.endswith('tar.gz'):
             os.remove(file_dir)
 
