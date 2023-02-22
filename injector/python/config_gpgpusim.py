@@ -25,6 +25,7 @@ def load_params(app_script, fault):
 -fault_operand $operand
 -fault_mask $mask
 -fault_stuckat $stuckat
+-fault_timeout_cycles $cycles
     """
     params = Template(injector_params).substitute(
         debug=fault['debug'],
@@ -36,7 +37,8 @@ def load_params(app_script, fault):
         in_out=fault['in_out'],
         operand=fault['operand'],
         mask=fault['mask'],
-        stuckat=fault['stuckat']
+        stuckat=fault['stuckat'],
+        cycles=fault['cycles']
     )
     with open(config_file, 'a') as file:
         file.write(params)

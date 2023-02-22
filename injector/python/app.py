@@ -1,5 +1,5 @@
 from common import APPS, DIR_INJECTOR, DIR_RESULTS
-from execute import execute_golden_app, execute_app_with_fault
+from execute import execute_app
 from log import log
 
 
@@ -22,6 +22,7 @@ def get_args():
     parser.add_argument('operand', type=int)
     parser.add_argument('mask', type=int)
     parser.add_argument('stuckat', type=int)
+    parser.add_argument('cycles', type=int)
     parser.add_argument('gpu', type=str)
     args = parser.parse_args()
     return vars(args)
@@ -57,9 +58,6 @@ def make_tar_file(fault):
 if __name__ == '__main__':
     args = get_args()
     logging.info('Execute app {} on {} GPU'.format(args['app_name'], args['gpu']))
-    if args['enable']:
-        execute_app_with_fault(args['app_name'], args)
-    else:
-        execute_golden_app(args['app_name'], args)
+    execute_app(args['app_name'], args)
     make_tar_file(args)
     logging.info('End simulation')
