@@ -2,7 +2,7 @@
 #
 # Robert Alexander Limas Sierra
 #
-APP_DIR=`pwd`
+APP_DIR=/injector
 apt install python3.8 -y
 
 export PATH=$PATH:/usr/local/cuda/bin
@@ -14,6 +14,7 @@ git clone https://github.com/robalexlimas/gpgpu-sim_distribution.git
 cd ${APP_DIR}/gpgpu-sim_distribution
 git checkout hardware_injection
 make clean
+cd ${APP_DIR}/gpgpu-sim_distribution
 source setup_environment
 make
 
@@ -24,4 +25,5 @@ cd ${APP_DIR}/apps/rodinia
 git checkout rodinia_gpgpusim
 chmod +x -R .
 make clean
+cd ${APP_DIR}/apps/rodinia
 make
