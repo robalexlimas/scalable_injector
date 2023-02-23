@@ -15,36 +15,43 @@ APPS = {
     'backprop': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'backprop'),
         'binary': 'run',
+        'verify': 'verify',
         'args': '2048'
     },
     'gaussian': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'gaussian'),
         'binary': 'run',
+        'verify': 'verify',
         'args': '16'
     },
     'nn': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'nn'),
         'binary': 'run',
+        'verify': 'verify',
         'args': os.path.join(DIR_APPS, 'rodinia', 'data', 'nn', 'list640k_64.txt')
     },
     'lavamd': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'lavaMD'),
         'binary': 'run',
+        'verify': 'verify',
         'args': '2'
     },
     'lud': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'lud'),
         'binary': 'run',
+        'verify': 'verify',
         'args': '256'
     },
     'heartwall': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'heartwall'),
         'binary': 'run',
+        'verify': 'verify',
         'args': '{} 2'.format(os.path.join(DIR_APPS, 'rodinia', 'data', 'heartwall', 'test.avi'))
     },
     'cfd': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'cfd'),
         'binary': 'run',
+        'verify': 'verify',
         'args': os.path.join(DIR_APPS, 'rodinia', 'data', 'cfd', 'fvcorr.domn.097K')
     }
 }

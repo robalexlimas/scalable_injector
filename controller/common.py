@@ -7,8 +7,6 @@ APPS = [
     'backprop',
     'gaussian',
     'nn',
-    'lavamd',
-    'lud',
     'heartwall'
 ]
 

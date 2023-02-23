@@ -11,6 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
 def execute_app(app_name, fault):
     app_dir = APPS[app_name]['dir']
     app_script = APPS[app_name]['binary']
+    run_script = APPS[app_name]['verify']
     args = APPS[app_name]['args']
     if fault['enable']:
         logging.info(
@@ -27,6 +28,7 @@ def execute_app(app_name, fault):
             )
         )
     load_params(app_dir, fault)
+    executable = '{}/{}'.format(app_dir, run_script) if fault['enable'] else '{}/{}'.format(app_dir, app_script)
     commands = '{} {} {} {}'.format(
         '{}/{}'.format(app_dir, app_script),    # route executable
         DIR_GPGPUSIM,                           # route gpgpu-sim
