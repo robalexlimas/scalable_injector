@@ -16,7 +16,7 @@ def exhaustive_fault_list():
                                 for operand in arch['OPERAND']:
                                     for mask in range(32):
                                         for bit in [0, 1]:
-                                            fault = '1,1,{},{},{},{},{},{},{},{},{},{}\n'.format(
+                                            fault = '1,1,{},{},{},{},{},{},{},{},{},{},{}\n'.format(
                                                 app,
                                                 sm,
                                                 sub_core,
@@ -26,6 +26,7 @@ def exhaustive_fault_list():
                                                 operand,
                                                 2 ** mask,
                                                 bit,
+                                                0,
                                                 gpu
                                             )
                                             fault_list.append(fault)
