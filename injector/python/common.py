@@ -30,28 +30,34 @@ APPS = {
         'verify': 'verify',
         'args': os.path.join(DIR_APPS, 'rodinia', 'data', 'nn', 'list640k_64.txt')
     },
-    'lavamd': {
-        'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'lavaMD'),
-        'binary': 'run',
-        'verify': 'verify',
-        'args': '2'
-    },
-    'lud': {
-        'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'lud'),
-        'binary': 'run',
-        'verify': 'verify',
-        'args': '256'
-    },
     'heartwall': {
         'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'heartwall'),
         'binary': 'run',
         'verify': 'verify',
         'args': '{} 2'.format(os.path.join(DIR_APPS, 'rodinia', 'data', 'heartwall', 'test.avi'))
     },
-    'cfd': {
-        'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'cfd'),
+    'bfs': {
+        'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'bfs'),
         'binary': 'run',
         'verify': 'verify',
-        'args': os.path.join(DIR_APPS, 'rodinia', 'data', 'cfd', 'fvcorr.domn.097K')
+        'args': ''
+    },
+    'hotspot': {
+        'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'hotspot'),
+        'binary': 'run',
+        'verify': 'verify',
+        'args': ''
+    },
+    'pathfinder': {
+        'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'pathfinder'),
+        'binary': 'run',
+        'verify': 'verify',
+        'args': ''
+    },
+    'b+tree': {
+        'dir': os.path.join(DIR_APPS, 'rodinia', 'cuda', 'b+tree'),
+        'binary': 'run',
+        'verify': 'verify',
+        'args': ''
     }
 }

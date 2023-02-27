@@ -7,8 +7,63 @@ APPS = [
     'backprop',
     'gaussian',
     'nn',
-    'heartwall'
+    'heartwall',
+    'bfs',
+    'hotspot',
+    'pathfinder',
+    'b+tree'
 ]
+
+TIMEOUTS = {
+    'backprop': {
+        'SM75_RTX2060': 0,
+        'SM7_TITANV': 1,
+        'SM6_TITANX': 2,
+        'SM3_KEPLER_TITAN': 3
+    },
+    'gaussian': {
+        'SM75_RTX2060': 0,
+        'SM7_TITANV': 0,
+        'SM6_TITANX': 0,
+        'SM3_KEPLER_TITAN': 0
+    },
+    'nn': {
+        'SM75_RTX2060': 0,
+        'SM7_TITANV': 0,
+        'SM6_TITANX': 0,
+        'SM3_KEPLER_TITAN': 0
+    },
+    'heartwall': {
+        'SM75_RTX2060': 0,
+        'SM7_TITANV': 0,
+        'SM6_TITANX': 0,
+        'SM3_KEPLER_TITAN': 0
+    },
+    'bfs': {
+        'SM75_RTX2060': 0,
+        'SM7_TITANV': 0,
+        'SM6_TITANX': 0,
+        'SM3_KEPLER_TITAN': 0
+    },
+    'hotspot': {
+        'SM75_RTX2060': 0,
+        'SM7_TITANV': 0,
+        'SM6_TITANX': 0,
+        'SM3_KEPLER_TITAN': 0
+    },
+    'pathfinder': {
+        'SM75_RTX2060': 0,
+        'SM7_TITANV': 0,
+        'SM6_TITANX': 0,
+        'SM3_KEPLER_TITAN': 0
+    },
+    'b+tree': {
+        'SM75_RTX2060': 0,
+        'SM7_TITANV': 0,
+        'SM6_TITANX': 0,
+        'SM3_KEPLER_TITAN': 0
+    }
+}
 
 GPUS = {
     'SM75_RTX2060': {

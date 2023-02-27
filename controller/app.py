@@ -1,4 +1,4 @@
-from common import APPS, GPUS
+from common import APPS, GPUS, TIMEOUTS
 
 import random
 
@@ -26,7 +26,7 @@ def exhaustive_fault_list():
                                                 operand,
                                                 2 ** mask,
                                                 bit,
-                                                0,
+                                                TIMEOUTS[app][gpu],
                                                 gpu
                                             )
                                             fault_list.append(fault)
