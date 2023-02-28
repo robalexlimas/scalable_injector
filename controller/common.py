@@ -3,6 +3,15 @@ import os
 
 BASE_DIR = os.getcwd()
 
+HPC_DIR = '/home/rlimassierra/FaultCampaings/apps'
+
+CORE_TYPE = {
+    '2': 'special unit',
+    '3': 'tensor core',
+    '5': 'floating-point',
+    '6': 'integer'
+}
+
 APPS = [
     'backprop',
     'gaussian',
