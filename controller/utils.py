@@ -7,4 +7,6 @@ def save_csv(fault_list, filename):
 
 
 def convert_mask(mask):
+    if int(mask) < 1:
+        return 0
     return log2(int(mask))
