@@ -6,6 +6,7 @@ BASE_DIR = os.getcwd()
 HPC_DIR = '/home/rlimassierra/FaultCampaings/apps'
 
 CORE_TYPE = {
+    '0': 'golden',
     '2': 'special unit',
     '3': 'tensor core',
     '5': 'floating-point',
