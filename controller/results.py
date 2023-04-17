@@ -16,8 +16,10 @@ def read_results():
     results_list = ['debug,enable,app,sm,sm_sub_core,core_type,core_id,in_out,operand,mask,stuckat,cycles,gpu,masked,sdc,due,error\n']
     apps = os.listdir(HPC_DIR)
     for app in apps:
+        print(app)
         app_dir = os.path.join(HPC_DIR, app)
         gpus = os.listdir(app_dir)
+        gpus = list(filter(lambda folder: folder != 'logs' and folder != 'sbatch', gpus))
         for gpu in gpus:
             gpu_dir = os.path.join(app_dir, gpu)
             results_dir = os.path.join(gpu_dir, 'results')
@@ -27,7 +29,7 @@ def read_results():
                 os.mkdir('extracted')
                 # debug enable app sm sm_sub_core core_type core_id in_out operand mask stuckat cycles gpu
                 fault = '0_0_{}_{}_{}'.format(
-                    app,
+                    app.split('_')[0],
                     result.split('.')[0],
                     '0'
                 )
@@ -41,7 +43,9 @@ def read_results():
                 tar_file = tarfile.open(result_dir)
                 tar_file.extractall(os.path.join(BASE_DIR, 'extracted'))
                 tar_file.close()
-                log_dir = os.path.join(BASE_DIR, 'extracted', '{}_golden.log'.format(app))
+                files_names = os.listdir(os.path.join(BASE_DIR, 'extracted'))
+                app_name = ''.join(app.split('_')[:-2])
+                log_dir = os.path.join(BASE_DIR, 'extracted', '{}_golden.log'.format(app_name))
                 err_dir = os.path.join(BASE_DIR, 'extracted', 'stderr.log')
                 with open(err_dir, 'r') as err_file:
                     lines = err_file.readlines()
